@@ -45,10 +45,17 @@ jobs:
           command: custom
           customCommand: run build
 
-      # - task: WhiteSource Bolt@20
-      #   displayName: Detect security and licence issues
+      - task: Npm@1
+        displayName: Test Package
+        inputs:
+          command: custom
+          customCommand: run test
+
+      # Version 20 has been deprecated and never completes while version 21 requires activation within the org.
+      
+      # - task: WhiteSource@21
       #   inputs:
-      #     cwd: "$(Build.SourcesDirectory)"
+      #     cwd: '$(System.DefaultWorkingDirectory)'
 
       - task: Npm@1
         displayName: Pack Package
